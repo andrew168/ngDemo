@@ -9,12 +9,14 @@
     <script src="demoController.js"></script>
 </head>
 <body ng-controller="DemoController as demo">
+    <div ng-repeat="item in demo.items">
     <div>
-        <label>{{demo.item1.name}}</label>
-        <label>{{demo.item1.price}}</label>
-        <label>{{demo.item1.quantity}}</label>
-        <button ng-click="demo.add()"> + </button>
-        <button ng-click="demo.subtract()"> - </button>
+        <label>{{item.name}}</label>
+        <label>{{item.price}}</label>
+        <label>{{item.quantity}}</label>
+        <button ng-click="demo.add($index)"> + </button>
+        <button ng-click="demo.subtract($index)"> - </button>
+    </div>
     </div>
     <div><label>Total: </label>{{demo.data.totalAmount}}</div>
 </body>
