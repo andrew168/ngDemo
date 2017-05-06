@@ -1,4 +1,9 @@
 <div>in market</div>
+
+<div ng-controller="MarketController as market">
+    <div> {{market.label}}</div>
+</div>
+
 <div><label>Total: </label>{{demo.data.totalAmount}}</div>
 
 <button ng-click="demo.gotoCart()"> to Cart</button>
