@@ -1,0 +1,23 @@
+{
+  "name": "angularjs-demo",
+  "version": "0.1.0",
+  "description": "angular js demo project",
+  "main": "index.html",
+  "scripts": {
+    "test": "index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew168/ngDemo.git"
+  },
+  "keywords": [
+    "angularjs",
+    "demo"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrew168/ngDemo/issues"
+  },
+  "homepage": "https://github.com/andrew168/ngDemo#readme"
+}
