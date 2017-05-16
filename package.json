@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/andrew168/ngDemo/issues"
   },
-  "homepage": "https://github.com/andrew168/ngDemo#readme"
+  "homepage": "https://github.com/andrew168/ngDemo#readme",
+  "dependencies": {
+    "gulp": "^3.8.11"
+  }
 }
