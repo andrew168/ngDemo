@@ -2,10 +2,12 @@ angular.module("ShopApp")
     .service('DataService', function ($timeout) {
         // 内部变量
         var self = this,
-            item1 = {name: "海尔电视", price: 2000, quantity: 2, sum:0};
+            items = [
+                {name: "海尔电视", price: 2000, quantity: 2, sum:0},
+                {name: "华为M8", price: 5000, quantity: 1, sum: 0}];
 
         // 对外接口：数据
-        self.item1 = item1;
+        self.items = items;
         self.totalAmount = 0; //这个既是内部使用，也是外部使用，因为他不是地址引用的对象， 只是简单的值变量
 
         // 对外接口：处理函数
@@ -13,19 +15,27 @@ angular.module("ShopApp")
         self.subtract = subtract;
 
         // 内部具体实现
-        function add() {
-            self.item1.quantity++;
+        function add(index) {
+            self.items[index].quantity++;
             $timeout(update);
         }
 
-        function subtract() {
-            self.item1.quantity--;
+        function subtract(index) {
+            self.items[index].quantity--;
             $timeout(update);
         }
 
         function update() {
-            item1.sum = item1.price * item1.quantity;
-            self.totalAmount = item1.sum;
+            var i,
+                n = self.items.length,
+                item;
+
+            self.totalAmount = 0;
+            for (i=0; i < n; i++) {
+                item = self.items[i];
+                item.sum = item.price * item.quantity;
+                self.totalAmount += item.sum;
+            }
         }
 
         $timeout(update);

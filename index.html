@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" ng-app="ShopApp">
 <head>
     <meta charset="UTF-8">
@@ -9,21 +9,16 @@
     <!-- endbuild -->
 
     <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
 
     <!-- build:js demo-app-all.js -->
     <script src="demoApp.js"></script>
     <script src="dataService.js"></script>
     <script src="demoController.js"></script>
+    <script src="market/marketController.js"></script>
     <!-- endbuild -->
 </head>
 <body ng-controller="DemoController as demo">
-    <div>
-        <label>{{demo.item1.name}}</label>
-        <label>{{demo.item1.price}}</label>
-        <label>{{demo.item1.quantity}}</label>
-        <button ng-click="demo.add()"> + </button>
-        <button ng-click="demo.subtract()"> - </button>
-    </div>
-    <div><label>Total: </label>{{demo.data.totalAmount}}</div>
+    <ui-view></ui-view>
 </body>
 </html>

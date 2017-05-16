@@ -1,0 +1,13 @@
+<div>in cart view </div>
+<div ng-repeat="item in demo.items">
+    <div>
+        <label>{{item.name}}</label>
+        <label>{{item.price}}</label>
+        <label>{{item.quantity}}</label>
+        <button ng-click="demo.add($index)"> +</button>
+        <button ng-click="demo.subtract($index)"> -</button>
+    </div>
+</div>
+<div><label>Total: </label>{{demo.data.totalAmount}}</div>
+
+<button ng-click="demo.gotoMarket()"> to Market</button>
