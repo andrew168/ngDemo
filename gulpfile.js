@@ -21,6 +21,7 @@ gulp.task('concat-files', function () {
         .pipe(assets)
         .pipe(assets.restore())
         .pipe($.useref())
+        .pipe($.if('*.html', $.replace(APP_JS_FILE, APP_JS_MIN_FILE)))
         .pipe(gulp.dest(DIST_FOLDER));
 });
 
