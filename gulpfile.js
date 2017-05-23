@@ -1,7 +1,8 @@
 'use strict';
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')(); //jshint ignore:line
-var uglifyjs = require("uglify-js");
+var uglifyjs = require("uglify-js"),
+    cleanCSS = require('gulp-clean-css');
 var fs = require('fs');
 var del = require('del');
 var args = require('yargs').argv;
@@ -9,6 +10,7 @@ var runSequence = require('run-sequence');
 JSON.minify = JSON.minify || require("node-json-minify");
 
 var APP_JS_FILE = "demo-app-all.js",
+    APP_CS_FILE = "demo-all.css",
     APP_JS_MIN_FILE = "demo-app-all.min.js",
     APP_JS_MAP = "demo-app-all.map",
     DIST_FOLDER = "dist/demoApp/";
@@ -39,6 +41,12 @@ gulp.task('minify', function () {
     fs.writeFileSync(DIST_FOLDER + APP_JS_MIN_FILE, result.code);
 });
 
+gulp.task('minify-css', function() {
+    return gulp.src(DIST_FOLDER + APP_CS_FILE)
+        .pipe(cleanCSS({compatibility: 'ie9'}))
+        .pipe(gulp.dest(DIST_FOLDER));
+});
+
 gulp.task('update-index', function () {
     console.log("start to modify index.html");
 });
@@ -48,5 +56,5 @@ gulp.task('deploy', function () {
 });
 
 gulp.task('default', function(callback) {
-    runSequence('clean', 'concat-files', 'minify', 'update-index', "deploy", callback);
+    runSequence('clean', 'concat-files', 'minify', 'minify-css', 'update-index', "deploy", callback);
 });
