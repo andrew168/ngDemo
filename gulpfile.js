@@ -51,10 +51,22 @@ gulp.task('update-index', function () {
     console.log("start to modify index.html");
 });
 
+gulp.task('copy-libs', function(){
+    return gulp.src('lib/angular*.min.js')
+        .pipe(gulp.dest(DIST_FOLDER + '/lib'));
+});
+
+gulp.task('copy-templates', function () {
+    gulp.src('market/*.html')
+        .pipe(gulp.dest(DIST_FOLDER + '/market'));
+    gulp.src('cart/*.html')
+        .pipe(gulp.dest(DIST_FOLDER + '/cart'));
+});
+
 gulp.task('deploy', function () {
     console.log("start to deploy");
 });
 
 gulp.task('default', function(callback) {
-    runSequence('clean', 'concat-files', 'minify', 'minify-css', 'update-index', "deploy", callback);
+    runSequence('clean', 'concat-files', 'copy-libs', 'copy-templates', 'minify', 'minify-css', 'update-index', "deploy", callback);
 });
